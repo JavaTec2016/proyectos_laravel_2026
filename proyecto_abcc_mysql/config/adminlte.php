@@ -299,6 +299,25 @@ return [
     */
 
     'menu' => [
+        ['header' => 'MAIN NAVIGATION'],
+        [
+            'text' => 'Dashboard',
+            'url'  => 'admin',
+            'icon' => 'bi bi-speedometer2',
+        ],
+        [
+            'text' => 'Users',
+            'url'  => 'admin/users',
+            'icon' => 'bi bi-people',
+        ],
+        [
+            'text'    => 'Settings',
+            'icon'    => 'bi bi-gear',
+            'submenu' => [
+                ['text' => 'General', 'url' => 'admin/settings'],
+                ['text' => 'Security', 'url' => 'admin/settings/security'],
+            ],
+        ],
         // Navbar items:
         [
             'type' => 'navbar-search',
