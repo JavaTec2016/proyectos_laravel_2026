@@ -19,3 +19,17 @@
         console.log("AdminLTE dashboard loaded.");
     </script>
 @stop
+{{-- Hidden logout form --}}
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none">
+    @csrf
+</form>
+
+{{-- Intercept the sidebar link click --}}
+@push('js')
+<script>
+    document.querySelector('.logout-menu-item').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('logout-form').submit();
+    });
+</script>
+@endpush
