@@ -82,32 +82,32 @@
 
                         <h5>Numero de Control: </h5>
                         <p id="num_control" class="example ml-4"">
-                          {{object.num_control }}
+                          {{$alumno->num_control }}
                         </p>
 
                         <h5>Nombre: </h5>
                         <p id="nombre">
-                          {{object.nombre}}
+                          {{$alumno->nombre}}
                         </p>
                         <h5>Primer Apellido: </h5>
                         <p id="nombre">
-                          {{object.primer_ap}}
+                          {{$alumno->primer_ap}}
                         </p>
                         <h5>Segundo Apellido: </h5>
                         <p id="nombre">
-                          {{object.segundo_ap}}
+                          {{$alumno->segundo_ap}}
                         </p>
                         <h5>Fecha de Nacimiento: </h5>
                         <p id="nombre">
-                          {{object.fecha_nac}}
+                          {{$alumno->fecha_nac}}
                         </p>
                         <h5>Semestre: </h5>
                         <p id="nombre">
-                          {{object.semestre}}
+                          {{$alumno->semestre}}
                         </p>
                         <h5>Carrera: </h5>
                         <p id="nombre">
-                          {{object.carrera}}
+                          {{$alumno->carrera}}
                         </p>
                       </section>
 

@@ -32,7 +32,7 @@ class AlumnoController extends Controller
     //-----------CAMBIUOs
 
     public function edit(Alumno $alumno){
-        return view('editar', compact($alumno));
+        return view('editar', compact('alumno'));
     }
     public function update(Request $request, $id){
         $alumno = Alumno::find($id);
@@ -55,6 +55,6 @@ class AlumnoController extends Controller
         return view('index', compact('alumnos', 'filtro'));
     }
     public function show(Alumno $alumno){
-        return view('alumnos.detalle', compact($alumno));
+        return view('detalle', compact('alumno'));
     }
 }

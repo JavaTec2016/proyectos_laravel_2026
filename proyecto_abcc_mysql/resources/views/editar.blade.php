@@ -66,7 +66,7 @@
               <div class="col-md-10">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Alumnos</a></li>
+                    <li class="breadcrumb-item"><a href={{route('alumnos.index')}}>Alumnos</a></li>
                     <li class="breadcrumb-item active" aria-current="page">
                       Modificar
                     </li>
@@ -85,11 +85,13 @@
                       <div class="panel-body">
                         <section class="example mt-4">
                           <form
-                            id="actualizar"
-                            method="post"
+                            action={{route('alumnos.update', $alumno->id)}}
+                            method="POST"
                             role="form"
-                            enctype="application/x-www-form-urlencoded"
+                            enctype="application/x-www-form-urlformencoded"
                           >
+                          @csrf
+                          @method('PUT')
                             <div class="mb-3">
                               <label for="num_control"
                                 >Numero de control:
@@ -100,12 +102,13 @@
                                 name="num_control"
                                  class="form-control"
                                  required
+                                 value={{$alumno->num_control}}
                               />
                             </div>
 
                             <div class="mb-3">
                               <label for="nombre">Nombre(s):</label>
-                              <input class="form-control" type="text" id="nombre" name="nombre" />
+                              <input class="form-control" type="text" id="nombre" name="nombre" value={{$alumno->nombre}}/>
                             </div>
                             <div class="mb-3">
                               <label for="primer_ap">Primer Apellido:</label>
@@ -114,6 +117,7 @@
                                 type="text"
                                 id="primer_ap"
                                 name="primer_ap"
+                                value={{$alumno->primer_ap}}
                               />
                             </div>
                             <div class="mb-3">
@@ -123,6 +127,7 @@
                                 type="text"
                                 id="segundo_ap"
                                 name="segundo_ap"
+                                value={{$alumno->segundo_ap}}
                               />
                             </div>
                             <div class="mb-3">
@@ -134,11 +139,12 @@
                                 type="date"
                                 id="fecha_nac"
                                 name="fecha_nac"
+                                value={{$alumno->fecha_nac}}
                               />
                             </div>
                             <div class="mb-3">
                               <label for="semestre">semestre:</label>
-                              <select class="form-control" name="semestre" id="semestre">
+                              <select class="form-control" name="semestre" id="semestre" value={{$alumno->semestre}}>
                                 <option value="1">1ro</option>
                                 <option value="2">2do</option>
                                 <option value="3">3ro</option>
@@ -153,7 +159,7 @@
                             </div>
                             <div class="mb-3">
                               <label for="carrera">Carrera: </label>
-                              <select class="form-control" name="carrera" id="carrera">
+                              <select class="form-control" name="carrera" id="carrera" value={{$alumno->carrera}}>
                                 <option value="ISC">ISC</option>
                                 <option value="IM">IM</option>
                                 <option value="IIA">IIA</option>
@@ -164,7 +170,7 @@
                             <button type="submit" class="btn btn-success">
                               Guardar Cambios
                             </button>
-                            <a href="/" class="btn btn-warning">Cancelar</a>
+                            <a href={{route('alumnos.index')}} class="btn btn-warning">Cancelar</a>
                           </form>
                         </section>
                       </div>
@@ -182,23 +188,8 @@
     </footer>
 
     <script type="text/javascript">
-      let url = new URL(window.location.href);
-      const oldId = url.searchParams.get("num_control");
-
-      fetch("/alumnos/alumnos/num_control/" + oldId)
-        .then((res) => {
-          if (res.ok) return res.json();
-        })
-        .then((data) => {
-          if (!data) return;
-          const alumb = data[0];
-          console.log(alumb);
-          for (const campo in alumb) {
-            document.getElementById(campo).setAttribute("value", alumb[campo] ? alumb[campo] : '');
-          }
-          document.getElementById("actualizar").action =
-            "alumnos/alumnos/num_control/" + oldId;
-        });
+        document.getElementById('semestre').value = {{$alumno->semestre}}
+        document.getElementById('carrera').value = "{{$alumno->carrera}}"
     </script>
   </body>
 </html>
